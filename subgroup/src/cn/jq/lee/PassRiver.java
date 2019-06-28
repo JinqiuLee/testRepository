@@ -28,7 +28,7 @@ public class PassRiver {
 		if (2 * a.higher(a.first()) < (a.first() + a.lower(a.last()))) {
 			// t1与t2来回传
 			while (a.size() > 0) {
-				int cur_Size=a.size();
+				//int cur_Size=a.size();
 				// 如果A这边这次往B大于2个人，那么每次A过去2个人，同时B还要返回耗时最小的一个人，这个人只能是t1与t2
 				// 如果最开始最小的和次小的都在a这边，则t1与t2过河，否则，最大的过河
 				if (a.first() == first & a.higher(a.first()) == second) {
@@ -47,7 +47,7 @@ public class PassRiver {
 					a.remove(a.last());
 				}
 				// b->a，无论A过去的是最大的还是最小的一组，B返回给A的永远都是耗时最少的那个人，所以这一部分可以共用，没必要写到if语句内
-				if (cur_Size != 2) {
+				if (a.size()!= 0) {
 					a.add(b.first());
 					sum += b.first();
 					b.remove(b.first());
