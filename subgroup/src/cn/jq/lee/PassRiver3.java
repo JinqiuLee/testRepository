@@ -78,7 +78,7 @@ public class PassRiver3 {
 				}
 			}
 		}else{
-			//t1来回
+			//t1来回传
 		}
 		System.out.println(sum);
 
