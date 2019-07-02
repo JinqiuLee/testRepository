@@ -25,12 +25,12 @@ public class PassRiver {
 		if (a.size() >= 2) {
 			first = a.first();
 			second = a.higher(a.first());
-		}
-		Object[] array = a.toArray();
-		for (count = array.length - 1, n = 0; count > 2; count -= 2, n += 2) {
-			sum += (Integer) array[count] + (Integer) array[0];
-		}
-		if (a.size() != 1) {
+
+			Object[] array = a.toArray();
+			for (count = array.length - 1, n = 0; count > 2; count -= 2, n += 2) {
+				sum += (Integer) array[count] + (Integer) array[0];
+			}
+
 			if (n * second > sum) {
 				sum = 0;
 				// t1与t2来回传
@@ -76,10 +76,12 @@ public class PassRiver {
 					}
 				}
 			}
-		}else{
-			sum+=a.first();
+		} else if (a.size() == 1) {
+			sum += a.first();
 			b.add(a.first());
 			a.remove(a.first());
+		} else {
+			System.out.println("可能没有输入任何东西");
 		}
 		System.out.println(sum);
 	}
