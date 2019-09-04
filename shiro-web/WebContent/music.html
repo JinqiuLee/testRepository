@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>音乐查询</title>
+<script src="resource/js/jquery.min.js"></script>
+</head>
+<body>
+	<form method="get">
+		输入框:<input type="text" id="w" name="key_word"> <input type="button"
+			id="query" value="查询">
+	</form>
+	<script type="text/javascript">
+		$("#query").click(function() {
+			var key_word = $("#w").val();
+			var a=$.ajax({
+				url : "https://c.y.qq.com/soso/fcgi-bin/client_search_cp",
+				type : "get",
+				dataType : "jsonp",
+				jsonp : "callback",
+				data : {
+					ct : 24,
+					qqmusic_ver : 1298,
+					new_json : 1,
+					remoteplace : "txt.yqq.center",
+					searchid : 47124617419832383,
+					t : 0,
+					aggr : 1,
+					cr : 1,
+					catZhida : 1,
+					lossless : 0,
+					flag_qc : 0,
+					p : 1,
+					n : 10,
+					w : key_word,
+					g_tk : 5381,
+					loginUin : 0,
+					hostUin : 0,
+					format : "json",
+					inCharset : "utf8",
+					outCharset : "utf-8",
+					notice : 0,
+					platform : "yqq.json",
+					needNewCode : "0"
+				}
+			});
+		});
+	</script>
+</body>
+</html>
