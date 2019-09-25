@@ -21,6 +21,7 @@ public class CrowdFundingExceptionResolever {
 			HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
 
+		
 		// 1.对当前请求进行检查
 		boolean checkAsyncRequestResult = CrowdFundingUtils
 				.checkAsyncRequest(request);
