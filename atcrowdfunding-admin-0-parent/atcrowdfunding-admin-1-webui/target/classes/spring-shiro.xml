@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans        
+    						http://www.springframework.org/schema/beans/spring-beans.xsd        
+    						http://www.springframework.org/schema/context        
+   							http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager"></property>
+		<property name="loginUrl" value="/admin/to/login/page.html"></property>
+		<property name="unauthorizedUrl" value="/pages/error/403.html"></property>
+		<property name="filterChainDefinitions">
+			<value>
+				/admin/do/login.html= anon
+				/index.html = anon
+				/bootstrap/** = anon
+				/css/** = anon
+				/fonts/** = anon
+				/js/** = anon
+				/img/** = anon
+				/jquery/** = anon
+				/script/** = anon
+				/ztree/** = anon
+				/** = authc
+			</value>
+		</property>
+	</bean>
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="realm"></property>
+	</bean>
+
+	<bean id="realm" class="com.atguigu.crowd.funding.realm.CustomRealm">
+		<property name="credentialsMatcher" ref="hashedCredentialsMatcher"></property>
+	</bean>
+
+	<bean id="hashedCredentialsMatcher"
+		class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+		<property name="hashAlgorithmName" value="md5"></property>
+		<property name="hashIterations" value="1"></property>
+	</bean>
+
+</beans>
